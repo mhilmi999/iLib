@@ -12,17 +12,33 @@ class Account extends CI_Model
         $alamat = $this->input->post('alamat');
         $username = $this->input->post('username');
         $email = $this->input->post('email');
-        $password = $this->input->post('password');
+        $password = MD5($this->input->post('password'));
 
 
         //membuat record baru di tabel users  
-        $thequery = "INSERT INTO member (nama, username, password,
-                    email,nrp, no_hp, departemen, alamat, photo) 
-                    VALUES ('$nama', '$nrp', '$no_hp', '$departemen',
-                    '$alamat', '$username', '$email', '$password', '$photo')";
+        $thequery = "INSERT INTO member (username, password, nama,
+                    nrp, email, no_hp, departemen, alamat, photo) 
+                    VALUES ('$username', '$password', '$nama', '$nrp',
+                    '$email', '$no_hp', '$departemen', '$alamat', '$photo')";
         $this->db->query($thequery);
         $id_user =  $this->db->insert_id();
 
         return $id_user;
+    }
+
+    function masukIn(){
+        $username = $this->input->post('username');
+        $password = MD5($this->input->post('password'));
+
+        $thequery = "SELECT * FROM member WHERE username = '$username' AND password = '$password'";
+        $res = $this->db->query($thequery);
+        $users = $res->result_array();
+        if (count($users) > 0) {
+            // kembalikan ID-user pertama
+            return $users;
+        }
+        
+        return [];
+        
     }
 }
