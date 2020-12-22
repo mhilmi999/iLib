@@ -13,6 +13,7 @@ class AccountCtl extends CI_Controller {
 		$this->load->helper(array('form', 'url', 'security'));
 		$this->load->model('account');
 		$this->load->library(array('form_validation'));
+		$this->load->model("Account");
 
 		$this->form_validation->set_rules(
 			'nama',
@@ -58,33 +59,22 @@ class AccountCtl extends CI_Controller {
 			return FALSE;
 		}
 
-
-
 		$config['upload_path']          = './photos/pemustaka/';
-		$config['allowed_types']        = 'gif|jpg|png';
-		$config['max_size']             = '2048';
-		
-
-		$new_name = time().$_FILES['photo']['name'];
+		$config['allowed_types']        = 'gif|jpg|png|PNG';
+		$config['max_size']             = 10000;
+		$new_name = time().'_'.$_FILES['photo']['name'];
 		$config['file_name'] = $new_name;
 
 		$this->load->library('upload', $config);
-		if (!$this->upload->do_upload('photo')) {   //gagal upload
-			var_dump($config);
-			die();
-			$error = array('error' => $this->upload->display_errors());
-			//$this->load->view('common/header');
-			$this->load->view('daftar', $error);
-			//$this->load->view('common/footer');
-			return;
+		if ($this->upload->do_upload('photo')) {   //berhasil upload
+			$data = array('upload_data' => $this->upload->data($new_name));
+			$this->Account->insertNewUser($config['file_name']);	
+			$this->load->view('Home/header');
+        	$this->load->view('Home/landingPage');
+        	$this->load->view('Home/footer');
+		}else{ // gagal uploads
+			echo $this->upload->display_errors();
 		}
-
-		//berhasil upload
-		$data = array('upload_data' => $this->upload->data());
-		$id_user = $this->account->insertNewUser($config['file_name']);
-		$this->load->view('common/header');
-		$this->load->view('signup_success');
-		$this->load->view('common/footer');
-		return;
+		
     }
 }

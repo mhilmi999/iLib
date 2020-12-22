@@ -19,7 +19,7 @@ class Account extends CI_Model
         $thequery = "INSERT INTO member (nama, username, password,
                     email,nrp, no_hp, departemen, alamat, photo) 
                     VALUES ('$nama', '$nrp', '$no_hp', '$departemen',
-                    '$alamat', '$username', '$email', '$password')";
+                    '$alamat', '$username', '$email', '$password', '$photo')";
         $this->db->query($thequery);
         $id_user =  $this->db->insert_id();
 
