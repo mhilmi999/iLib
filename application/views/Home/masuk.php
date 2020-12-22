@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>iLib | Daftar</title>
   <link rel="stylesheet" href="<?= base_url();?>asset/loginform/dist/style.css">
+  <link href="<?= base_url();?>/asset/NewBiz/img/favicon.png" rel="icon">
+  <link href="<?= base_url();?>/asset/NewBiz/img/apple-touch-icon.png" rel="apple-touch-icon">
 
 </head>
 <body>

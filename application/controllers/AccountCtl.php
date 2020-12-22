@@ -114,7 +114,7 @@ class AccountCtl extends CI_Controller {
 			
 			//kembali ke halaman login
 			$this->load->view(
-				'Home/Masuk',
+				'Home/masuk',
 				array('msg' => 'Username/Password is incorrect!')
 			);
 		} else {

@@ -67,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </li>
               <li class="drop-down"><a href="#">Pustakawan</a>
                 <ul>    
-                  <li><a href="<?= base_url(). 'index.php/Account/masuk';?>">Masuk</a></li>
+                  <li><a href="<?= base_url(). 'index.php/AccountCtl/masuk';?>">Masuk</a></li>
                 </ul>
               </li>
             </ul>

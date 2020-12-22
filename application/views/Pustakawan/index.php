@@ -1,2 +1,32 @@
-<h1>Ini halaman login Pustakawan</h1>
-<a href="<?= base_url() . 'index.php/AccountCtl/keluarIn';?>">Keluar</a>
+
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs Section ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Pustakawan</h2>
+                    <ol>
+                        <li><a href="index.html">Home</a></li>
+                        <li>Pustakawan</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section>
+        <!-- End Breadcrumbs Section -->
+
+        <section class="inner-page pt-4">
+            <div class="container">
+                <p>
+                    Selamat datang <?= $nama;?>
+                </p>
+                
+            </div>
+        </section>
+
+    </main>
+    <!-- End #main -->
+
