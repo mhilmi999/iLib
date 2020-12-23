@@ -85,7 +85,7 @@
                                     </div>
                                     <div class="form-group col-md-2">
                                       <label for="tahun">Tahun</label>
-                                      <input type="text" class="form-control" id="inputZip" placeholder="1999">
+                                      <input type="text" class="form-control" id="tahun" placeholder="1999" name="tahun">
                                     </div>
                                     <div class="form-group col-md-4">
                                       <label for="id_author">Penulis</label>

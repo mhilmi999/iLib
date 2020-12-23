@@ -14,18 +14,30 @@
         <div class="row">
           <div class="col-lg-12">
             <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
+              <li data-filter="*" class="filter-active">Semua</li>
+              <li data-filter=".filter-app">Children</li>
+              <li data-filter=".filter-card">Pemrograman</li>
+              <li data-filter=".filter-business">Business</li>
+              <li data-filter=".filter-education">Education</li>
+              <li data-filter=".filter-tech">Technology</li>
+              <li data-filter=".filter-web">Others</li>
             </ul>
           </div>
         </div>
-        <?php foreach ($buku as $a) {?>
             <div class="row portfolio-container">
-                <div class="col-lg-3 col-md-4 portfolio-item filter-app">
+              <?php 
+                foreach ($buku as $a) {
+              ?>
+                <div class="col-lg-3 col-md-4 portfolio-item 
+                filter-<?php if($a['klasifikasi'] == 'Children') {echo 'app';} 
+                        else if($a['klasifikasi'] == 'Pemrograman') {echo 'card';}
+                        else if($a['klasifikasi'] == 'Business') {echo 'business';}
+                        else if($a['klasifikasi'] == 'Education') {echo 'education';}
+                        else if($a['klasifikasi'] == 'Technology') {echo 'tech';}
+                        else echo 'web';
+                      ?>">
                     <div class="portfolio-wrap">
-                    <img src="<?= base_url();?>/asset/NewBiz/img/portfolio/app1.jpg" class="img-fluid" alt="">
+                    <img  src="<?= base_url('photos/pustakawan/coverbuku/'). $a['cover_book'];?>" height="320px" width="255px" alt="">
                     <div class="portfolio-info">
                         <a style="color: antiquewhite; font-weight: bold;" href="#"><?= $a['nama_buku'] ?></a>
                         <a style="color: antiquewhite;"><?= $a['nama_author'] ?></a>
@@ -38,7 +50,7 @@
                     </div>
                     </div>
                 </div>
+              <?php } ?>
             </div>
-        <?php } ?>
       </div>
     </section><!-- #portfolio -->

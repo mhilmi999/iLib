@@ -92,9 +92,10 @@ class PustakawanCtl extends CI_Controller {
         $this->load->helper(array('url', 'security'));
 		$this->load->model('Buku');
         $this->load->library(array('form_validation'));
-        $buku=$this->Buku->getBuku();
+        $data['buku']=$this->Buku->getBuku();
         $this->load->view('Pustakawan/header');
-        $this->load->view('Pustakawan/katalogBuku', array("buku"=>$buku));
+        //var_dump($buku);
+        $this->load->view('Pustakawan/katalogBuku', $data);
         $this->load->view('Pustakawan/footer');
         
     }
