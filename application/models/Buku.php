@@ -7,6 +7,12 @@ class Buku extends CI_Model
         return $res->result_array();
     }
 
+    function getBuku(){
+        $thequery = "SELECT t1.*, t2.nama_author FROM buku t1 JOIN author t2 ON t1.id_author=t2.id_author ";
+        $res = $this->db->query($thequery);
+        return $res->result_array();
+    }
+
     function tambahBuku($photo){
         $id_author = $this->input->post('id_author');
         $nama_buku = $this->input->post('nama_buku');

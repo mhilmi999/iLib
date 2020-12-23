@@ -21,24 +21,24 @@
             </ul>
           </div>
         </div>
-
-        <div class="row portfolio-container">
-            <div class="col-lg-3 col-md-4 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                  <img src="<?= base_url();?>/asset/NewBiz/img/portfolio/app1.jpg" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <a style="color: antiquewhite; font-weight: bold;" href="#">Jujur saya kecewa ketika dengar kalian gk mampu</a>
-                    <a style="color: antiquewhite;">Ini author</a>
-                    <a style="color: antiquewhite;">Ini author</a>
-                    <a style="color: antiquewhite;">Ini author</a>
-                    <div>
-                      <a href="img/portfolio/app1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
-                      <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+        <?php foreach ($buku as $a) {?>
+            <div class="row portfolio-container">
+                <div class="col-lg-3 col-md-4 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                    <img src="<?= base_url();?>/asset/NewBiz/img/portfolio/app1.jpg" class="img-fluid" alt="">
+                    <div class="portfolio-info">
+                        <a style="color: antiquewhite; font-weight: bold;" href="#"><?= $a['nama_buku'] ?></a>
+                        <a style="color: antiquewhite;"><?= $a['nama_author'] ?></a>
+                        <a style="color: antiquewhite;"><?= $a['penerbit'] ?></a>
+                        <a style="color: antiquewhite;"><?= $a['tahun'] ?></a>
+                        <div>
+                        <a href="img/portfolio/app1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                        <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                        </div>
                     </div>
-                  </div>
+                    </div>
                 </div>
-              </div>
-        </div>
-
+            </div>
+        <?php } ?>
       </div>
     </section><!-- #portfolio -->
