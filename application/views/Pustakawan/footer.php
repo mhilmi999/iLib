@@ -1,11 +1,13 @@
-    <!-- ======= Footer ======= -->
-    <footer id="footer">
+ 
+ <!-- ======= Footer ======= -->
+ 
+ <footer id="footer">
         <div class="footer-top">
             <div class="container">
                 <div class="row">
 
                     <div class="col-lg-4 col-md-6 footer-info">
-                        <h3>NewBiz</h3>
+                        <h3>iLib</h3>
                         <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat
                             mauris nunc congue.</p>
                     </div>
@@ -53,7 +55,7 @@
 
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong>NewBiz</strong>. All Rights Reserved
+                &copy; Copyright <strong>iLib</strong>. All Rights Reserved
             </div>
             <div class="credits">
                 <!--
@@ -61,14 +63,32 @@
         You can delete the links only if you purchased the pro version.
         Licensing information: https://bootstrapmade.com/license/
         Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=NewBiz
-      -->
+      
                 Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             </div>
         </div>
     </footer>
     <!-- End Footer -->
+    
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="<?= base_url();?>/asset/sidebar/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url();?>/asset/sidebar/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="<?= base_url();?>/asset/sidebar/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="<?= base_url();?>/asset/sidebar/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="<?= base_url();?>/asset/sidebar/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="<?= base_url();?>/asset/sidebar/js/demo/chart-area-demo.js"></script>
+    <script src="<?= base_url();?>/asset/sidebar/js/demo/chart-pie-demo.js"></script>
 
     <!-- Vendor JS Files -->
     <script src="<?= base_url();?>/asset/NewBiz/assets/vendor/jquery/jquery.min.js"></script>
@@ -81,6 +101,24 @@
     <script src="<?= base_url();?>/asset/NewBiz/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
     <script src="<?= base_url();?>/asset/NewBiz/assets/vendor/venobox/venobox.min.js"></script>
     <script src="<?= base_url();?>/asset/NewBiz/assets/vendor/aos/aos.js"></script>
+
+    <script>
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value;
+
+        slider.oninput = function() {
+        output.innerHTML = this.value;
+        }
+    </script>
+
+    <script>
+      $('.custom-file-input').on('change', function() {
+          let fileName = $(this).val().split('\\').pop();
+          $(this).next('.custom-file-label').addClass("selected").html(fileName);
+      });
+    </script>
+
 
     <!-- Template Main JS File -->
     <script src="<?= base_url();?>/asset/NewBiz/assets/js/main.js"></script>

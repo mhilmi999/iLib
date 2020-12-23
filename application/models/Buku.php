@@ -7,7 +7,7 @@ class Buku extends CI_Model
         return $res->result_array();
     }
 
-    function tambahBuku(){
+    function tambahBuku($photo){
         $id_author = $this->input->post('id_author');
         $nama_buku = $this->input->post('nama_buku');
         $stock = $this->input->post('stock');
@@ -16,8 +16,8 @@ class Buku extends CI_Model
         $tahun = $this->input->post('tahun');
         
         $thequery = "INSERT INTO 
-        buku (id_author, nama_buku, amountTotal, penerbit, klasifikasi, tahun)
-        VALUES ('$id_author', '$nama_buku', '$stock',
+        buku (id_author, nama_buku, cover_book, amountTotal, penerbit, klasifikasi, tahun)
+        VALUES ('$id_author', '$nama_buku','$photo' , '$stock',
                  '$penerbit', '$klasifikasi', '$tahun')";
         $res = $this->db->query($thequery);
     }

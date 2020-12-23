@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>iLib | Daftar</title>
+  <title>iLib | Masuk</title>
   <link rel="stylesheet" href="<?= base_url();?>asset/loginform/dist/style.css">
   <link href="<?= base_url();?>/asset/NewBiz/img/favicon.png" rel="icon">
   <link href="<?= base_url();?>/asset/NewBiz/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -11,7 +11,7 @@
 <body>
 <!-- partial:index.partial.html -->
 
- <h1 style="margin-top: 120px;">Akses iLib sekarang!</h1>
+ <h1 style="margin-top: 120px; color: #fff;">Akses iLib sekarang!</h1>
 <form action="<?= base_url(). 'index.php/AccountCtl/masukIn';?>" method="post">
   <section>
   <?= $this->session->flashdata('message');?>

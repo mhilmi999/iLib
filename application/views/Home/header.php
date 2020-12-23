@@ -55,8 +55,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
           <li class="active"><a href="#intro">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
           <li class="drop-down"><a href="">Akses sekarang!</a>
             <ul>
             <li class="drop-down"><a href="#">Pemustaka</a>

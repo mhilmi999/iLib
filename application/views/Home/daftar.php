@@ -12,7 +12,7 @@
 <!-- partial:index.partial.html -->
 <div id="svg_wrap"></div>
 
- <h1>Pengajuan Anggota iLib</h1>
+ <h1 style="color: #fff;">Pengajuan Anggota iLib</h1>
  <?= form_open_multipart('AccountCtl/daftarIn');?>
   <section>
     <p>Informasi Personal</p>

@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>iLib | Daftar</title>
-  <link rel="stylesheet" href="<?= base_url();?>asset/loginform/dist/style.css">
-  <link href="<?= base_url();?>/asset/NewBiz/img/favicon.png" rel="icon">
-  <link href="<?= base_url();?>/asset/NewBiz/img/apple-touch-icon.png" rel="apple-touch-icon">
-  <style>
+<style>
 .slidecontainer {
   width: 100%;
 }
@@ -31,62 +23,105 @@
   appearance: none;
   width: 25px;
   height: 25px;
-  background: #4CAF50;
+  background: #007BFF;
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background: #4CAF50;
+  background: #F5FAFF;
   cursor: pointer;
 }
 </style>
 
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<div id="svg_wrap"></div>
 
- <h1>Tambah Buku</h1>
- <form action="<?= base_url().'index.php/PustakawanCtl/menambahBuku';?>" method="post">
-  <section>
-    <p>Informasi Personal</p>
-    <input type="text" placeholder="Judul Buku" required="required" name="nama_buku"/>
-    <input type="text" placeholder="Penerbit" required="required" name="penerbit" />
-    <input type="text" placeholder="Klasifikasi" required="required" name="klasifikasi" />
-    <input type="text" placeholder="Tahun" required="required" name="tahun" />
-      <div class="slidecontainer">
-        <input name="stock" type="range" min="1" max="50" value="25" class="slider" id="myRange">
-        <p>Stock: <span id="demo"></span></p>
-      </div>
-      <div class="form-group">
-        <label for="id_author">Select list:</label>
-        <select class="form-control" id="id_author" name="id_author">
-          <?php foreach ($author as $a){?>
-              <option value="<?= $a['id_author'];?>"><?= $a['nama_author'];?></option>
-          <?php }?>
-        </select>
-      </div>
-  </section>
+    <main id="main">
 
-  <button class="button" type="submit" value="submit" name="submit">Tambah Buku</button>
-  
-    </form>
+<!-- ======= Breadcrumbs Section ======= -->
+<section class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Pustakawan</h2>
+            <ol>
+                <li><a href="index.html">Tambah Buku</a></li>
+                <li>Pustakawan</li>
+            </ol>
+        </div>
+
+    </div>
+</section>
+<!-- End Breadcrumbs Section -->
+<div class="row" style="margin-left: 350px; margin-top: 30px;">
+
+                         <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary text-justify">Tambah Buku</h6>
+                                    
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                <?= form_open_multipart('PustakawanCtl/menambahBuku');?>
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="nama_buku">Judul Buku</label>
+                                      <input type="text" class="form-control" id="nama_buku" placeholder="Judul Buku" name="nama_buku" required="required">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="penerbit">Penerbit</label>
+                                      <input type="text" class="form-control" id="penerbit" placeholder="Penerbit" name="penerbit" required="required">
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="klasifikasi">Klasifikasi</label>
+                                      <input type="text" class="form-control" id="klasifikasi" name="klasifikasi" placeholder="Klasifikasi Buku">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                      <label for="tahun">Tahun</label>
+                                      <input type="text" class="form-control" id="inputZip" placeholder="1999">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label for="id_author">Penulis</label>
+                                      <select id="inputState" class="form-control" name="id_author">
+                                        <?php foreach ($author as $a) {?>
+                                          <option value="<?= $a['id_author'];?>"><?= $a['nama_author'];?></option>
+                                        <?php }?>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <div class="form-row">
+                                      <label style="margin-left:5px;">Cover Buku</label>  
+                                      <div class="form-group col-md-12">
+                                            <div class="custom-file">
+                                              <label class="custom-file-label" for="customFile">Pilih File Gambar </label>
+                                              <input type="file" class="custom-file-input" id="customFile" name="photo">
+                                            </div>
+                                      </div>
+                                    </div>
+                                  </div>  
+                                  
+                                  <div class="slidecontainer">
+                                    <input name="stock" type="range" min="1" max="50" value="25" class="slider" id="myRange">
+                                    <p>Stock: <span id="demo"></span></p>
+                                  </div>
+                                  <div class="d-flex justify-content-center">
+                                  <button type="submit" value="submit" name="submit" class="btn btn-primary ">Tambah</button>
+                                  </div>
+                                <?= form_close();?>
+                                </div>
+                            </div>
+                        </div>
+                      
 
 
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
-  <script  src="<?= base_url();?>asset/loginform/dist/script.js"></script>
-  <script>
-  var slider = document.getElementById("myRange");
-  var output = document.getElementById("demo");
-  output.innerHTML = slider.value;
+</main>
+<!-- End #main -->
 
-  slider.oninput = function() {
-  output.innerHTML = this.value;
-}
-</script>
-
-</body>
-</html>
