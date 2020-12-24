@@ -1,17 +1,19 @@
 <section id="portfolio" class="clearfix">
 <br>
-<br>
-    <div class="container">  
+        <br>
+      <div class="container">  
         <header class="section-header">
           <h3 class="section-title">Keranjang Peminjaman</h3>
         </header>
 
         <div class="row portfolio-container">
-                <?php 
-                    $index=0;
-                    foreach ($buku as $a){
-                        if (isset($_SESSION['cart'][$index]) && $a['id_buku']==$_SESSION['cart'][$index]){ ?>
-            <div class="col-lg-3 col-md-4 portfolio-item">
+        <?php 
+                foreach ($buku as $a){
+                    for ($index=0; $index < count($_SESSION['cart']); $index++){
+                        if (isset($_SESSION['cart'][$index]) && $a['id_buku']==$_SESSION['cart'][$index]){
+                    
+                     ?>
+          <div class="col-lg-3 col-md-4 portfolio-item">
                 <div class="portfolio-wrap">
                     <img  src="<?= base_url('photos/pustakawan/coverbuku/'). $a['cover_book'];?>" height="320px" width="255px" alt="">
                     <div class="portfolio-info">
@@ -27,16 +29,17 @@
                         </div>
                     </div>
                 </div>
-            </div>
-                <?php        
-                $index++;    
+          </div>
+          <?php        
+ 
                 }
-                    
+            }   
                 }
+                
 
             ?> 
 
         </div>
 
-    </div>
-</section><!-- #portfolio -->
+      </div>
+    </section><!-- #portfolio -->
