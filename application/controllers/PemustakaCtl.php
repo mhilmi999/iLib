@@ -70,4 +70,19 @@ class PemustakaCtl extends CI_Controller {
         $this->load->view('Pemustaka/keranjangBuku', $data);
         $this->load->view('Pemustaka/footer');
     }
+
+    public function hapusKeranjangBuku($id_buku=-1){
+        $this->load->helper('url');
+        if ($id_buku==-1){
+            redirect('PemustakaCtl/keranjangBuku', 'refresh');
+        }
+        else if (isset($_SESSION['cart'])){
+            for ($index=0; $index < count($_SESSION['cart']); $index++){
+                if ($_SESSION['cart'][$index]==$id_buku){
+                    unset($_SESSION['cart'][$index]);
+                }
+            }
+        }
+        redirect('PemustakaCtl/keranjangBuku');
+    }
 }

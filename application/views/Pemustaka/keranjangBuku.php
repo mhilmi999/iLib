@@ -4,6 +4,9 @@
       <div class="container">  
         <header class="section-header">
           <h3 class="section-title">Keranjang Peminjaman</h3>
+          <?php if (!isset($_SESSION['cart']) || count($_SESSION['cart'])==0) { ?>
+          <p> Keranjang peminjaman anda masih kosong <p>
+          <?php }else if(isset($_SESSION['cart'])){ ?>
         </header>
 
         <div class="row portfolio-container">
@@ -34,7 +37,7 @@
  
                 }
             }   
-                }
+                }}
                 
 
             ?> 
