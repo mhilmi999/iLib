@@ -42,4 +42,32 @@ class PemustakaCtl extends CI_Controller {
 
         ));
     }
+
+    public function katalogBuku(){
+        $this->load->helper(array('url', 'security'));
+        $this->load->model('Buku');
+        $this->load->library(array('form_validation'));
+        $data['buku']=$this->Buku->getBuku();
+        $this->load->view('Pemustaka/header');
+        //var_dump($buku);
+        $this->load->view('Pemustaka/katalogBuku', $data);
+        $this->load->view('Pemustaka/footer');
+        
+    }
+
+    public function keranjangBuku($id_buku=-1){
+        if (!isset($_SESSION['cart']) && $id_buku != -1){
+            $this->session->set_userdata(array("cart"=>array($id_buku)));
+        }else if($id_buku != -1){
+            array_push($_SESSION['cart'], $id_buku);
+        }
+        //var_dump($_SESSION['cart']);
+        //die;
+        $this->load->model('Buku');
+        $data['buku']=$this->Buku->getBuku();
+        $this->load->view('Pemustaka/header');
+        //var_dump($buku);
+        $this->load->view('Pemustaka/keranjangBuku', $data);
+        $this->load->view('Pemustaka/footer');
+    }
 }
