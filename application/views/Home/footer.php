@@ -8,28 +8,19 @@
 
           <div class="col-lg-4 col-md-6 footer-info">
             <h3>iLib</h3>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+            <p>Perpustakaan online yang memudahkan kamu untuk melakukan reservasi buku secara online dan tanpa batas.</p>
           </div>
 
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Terms of service</a></li>
-              <li><a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
+       
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h4>Contact Us</h4>
+            <h4>Hubungi Kami</h4>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br>
+              Gedung Perpustakaan ITS <br>
+              ITS, Surabaya<br>
+    
               <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              <strong>Email:</strong> ilib.perpus@gmail.com<br>
             </p>
 
             <div class="social-links">
@@ -43,10 +34,10 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
+            <h4>Beri Masukan</h4>
+            <p>Jika memiliki Kendala, Silahkan kirim kritik dan saran pada email kami. </p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit"  value="Subscribe">
+              <input type="email" name="email"><input type="submit"  value="Kirim">
             </form>
           </div>
 
@@ -56,7 +47,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>Perpus [KOTAK2] </strong>. All Rights Reserved
+        &copy; Copyright <strong>I-Lib</strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!--
@@ -86,6 +77,7 @@
   <script src="<?= base_url();?>/asset/NewBiz/lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="<?= base_url();?>/asset/NewBiz/lib/isotope/isotope.pkgd.min.js"></script>
   <script src="<?= base_url();?>/asset/NewBiz/lib/lightbox/js/lightbox.min.js"></script>
+  <script src="<?= base_url();?>/asset/NewBiz/aos/aos.js"></script>
   <!-- Contact Form JavaScript File -->
   <script src="<?= base_url();?>/asset/NewBiz/contactform/contactform.js"></script>
 
