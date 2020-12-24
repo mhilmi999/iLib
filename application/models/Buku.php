@@ -28,4 +28,23 @@ class Buku extends CI_Model
         $res = $this->db->query($thequery);
     }
 
+    function reqPinjam(){
+        $session_data = $this->session->userdata('logged_in');
+        //var_dump($session_data['id_user']);
+        //die;
+        $member=$session_data['id_user'];
+        $thequery = "INSERT INTO peminjaman (id_member) VALUES ('$member')";
+        $this->db->query($thequery);
+        $id_pinjam = $this->db->insert_id();
+        for ($index=0; $index < count($_SESSION['cart']); $index++){
+            if (isset($_SESSION['cart'][$index])){
+                $jujursayakecewa=$_SESSION['cart'][$index];
+                $thequery2 = "INSERT INTO detail_peminjaman (id_pinjam, id_buku) VALUES ('$id_pinjam', '$jujursayakecewa')";
+                $this->db->query($thequery2);
+            }
+        }
+        unset($_SESSION['cart']);
+        return $id_pinjam;
+    }
+
 }

@@ -78,11 +78,34 @@ class PemustakaCtl extends CI_Controller {
         }
         else if (isset($_SESSION['cart'])){
             for ($index=0; $index < count($_SESSION['cart']); $index++){
-                if ($_SESSION['cart'][$index]==$id_buku){
+                if (isset($_SESSION['cart'][$index]) && $_SESSION['cart'][$index]==$id_buku){
                     unset($_SESSION['cart'][$index]);
                 }
             }
         }
+        //var_dump(array($_SESSION['cart']));
         redirect('PemustakaCtl/keranjangBuku');
+    }
+
+    public function hapusKeranjang(){
+        unset($_SESSION['cart']);
+        //var_dump(array($_SESSION['cart']));
+        redirect('PemustakaCtl/keranjangBuku');
+    }
+
+    public function reservasiBuku(){
+        if (!isset($_SESSION['cart'])){
+            redirect('PemustakaCtl/keranjangBuku', 'refresh');
+        }
+        //$data=$_SESSION['cart'];
+        //unset($_SESSION['cart']);
+        $this->load->model('Buku');
+        $pinjam=$this->Buku->reqPinjam();
+        //if ()
+        //var_dump(array($_SESSION['cart']));
+        if ($pinjam){
+            redirect('PemustakaCtl/keranjangBuku');
+        }else die;
+        
     }
 }

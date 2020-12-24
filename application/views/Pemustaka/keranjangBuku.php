@@ -6,8 +6,16 @@
           <h3 class="section-title">Keranjang Peminjaman</h3>
           <?php if (!isset($_SESSION['cart']) || count($_SESSION['cart'])==0) { ?>
           <p> Keranjang peminjaman anda masih kosong <p>
-          <?php }else if(isset($_SESSION['cart'])){ ?>
+          <?php }else if(isset($_SESSION['cart'])){ 
+            ?>
+            <div>
+                <button><a class="btn-get-started scrollto" href=<?php echo base_url().'index.php/PemustakaCtl/hapusKeranjang';?>>Hapus Keranjang</a></button>
+            </div>
+            <div>
+                <button><a class="btn-get-started scrollto" href=<?php echo base_url().'index.php/PemustakaCtl/reservasiBuku';?>>Reservasi Buku</a></button>
+            </div>
         </header>
+        <br>
 
         <div class="row portfolio-container">
         <?php 
@@ -25,9 +33,6 @@
                         <a style="color: antiquewhite;"><?= $a['penerbit'] ?></a>
                         <a style="color: antiquewhite;"><?= $a['tahun'] ?></a>
                         <div>
-                        <div>
-                          <button><a class="btn-get-started scrollto" href=<?php echo base_url().'index.php/PemustakaCtl/hapusKeranjangBuku/'.$a['id_buku'];?>>Hapus dari Keranjang</a></button>
-                        </div>
                         <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
                         </div>
                     </div>
