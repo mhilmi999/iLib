@@ -124,13 +124,14 @@ class AccountCtl extends CI_Controller {
 				'id_user' => $users[0]['id_member'],
 				'namalengkap' => $users[0]['nama'],
 				'username' => $users[0]['username'],
-				'id_grup' => $users[0]['role'],
+				'role' => $users[0]['role'],
 				'password'   => $users[0]['password'],
 				'email' => $users[0]['email'],
 				'no_hp' => $users[0]['no_hp'],
 				'departemen' => $users[0]['departemen'],
 				'alamat' => $users[0]['alamat'],
-				'photo' => $users[0]['photo']
+				'photo' => $users[0]['photo'],
+				'nrp' => $users[0]['nrp']
 			);
 			//var_dump($sess_array);
 			//die();
