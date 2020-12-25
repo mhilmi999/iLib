@@ -46,7 +46,7 @@
 
     <div class="button" id="prev">&larr; Sebelumnya</div>
   <div class="button" id="next">Selanjutnya &rarr;</div>
-  <input class="button" type="submit" id="submit" value="submit"/>
+  <input class="button" type="submit" id="submit" style="margin-left: auto;margin-right:auto;" value="submit"/>
 
 <?= form_close();?>
 

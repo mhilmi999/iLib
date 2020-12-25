@@ -8,17 +8,25 @@
           <p> Keranjang peminjaman anda masih kosong <p>
           <?php }else if(isset($_SESSION['cart'])){ 
             ?>
-            <div>
-                <button><a class="btn-get-started scrollto" href=<?php echo base_url().'index.php/PemustakaCtl/hapusKeranjang';?>>Hapus Keranjang</a></button>
-            </div>
-            <div>
-                <button><a class="btn-get-started scrollto" href=<?php echo base_url().'index.php/PemustakaCtl/reservasiBuku';?>>Reservasi Buku</a></button>
-            </div>
+           <div class="row" style="margin:auto; max-width:300px;">
+                <div class="col ">
+                    <a class="btn btn-primary" style="background-color: #b13b42; border:none;"  href=<?php echo base_url().'index.php/PemustakaCtl/hapusKeranjang';?>>
+                        
+                        Hapus Keranjang
+                    </a>      
+                </div>
+                <div class="col">
+                    <a class="btn btn-primary" style="background-color: #b13b42; border:none;" href=<?php echo base_url().'index.php/PemustakaCtl/reservasiBuku';?>>
+                        Reservasi Buku
+                    </a>
+                </div>
+            </div> 
+            
         </header>
         <br>
 
         <div class="row portfolio-container">
-        <?php 
+            <?php 
                 foreach ($buku as $a){
                     for ($index=0; $index < count($_SESSION['cart']); $index++){
                         if (isset($_SESSION['cart'][$index]) && $a['id_buku']==$_SESSION['cart'][$index]){
@@ -32,9 +40,6 @@
                         <a style="color: antiquewhite;"><?= $a['nama_author'] ?></a>
                         <a style="color: antiquewhite;"><?= $a['penerbit'] ?></a>
                         <a style="color: antiquewhite;"><?= $a['tahun'] ?></a>
-                        <div>
-                        <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                        </div>
                     </div>
                 </div>
           </div>
@@ -46,8 +51,8 @@
                 
 
             ?> 
-
+                
         </div>
-
+        
       </div>
     </section><!-- #portfolio -->

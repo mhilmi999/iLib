@@ -23,7 +23,7 @@
   appearance: none;
   width: 25px;
   height: 25px;
-  background: #007BFF;
+  background: #ba4148;
   cursor: pointer;
 }
 
@@ -45,7 +45,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <h2>Pustakawan</h2>
             <ol>
-                <li><a href="index.html">Tambah Buku</a></li>
+                <li><a href="index.html" style="color: #ba4148;">Tambah Buku</a></li>
                 <li>Pustakawan</li>
             </ol>
         </div>
@@ -61,7 +61,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary text-justify">Tambah Buku</h6>
+                                    <h6 class="m-0 font-weight-bold  text-justify" style="color:#ba4148;">Tambah Buku</h6>
                                     
                                 </div>
                                 <!-- Card Body -->
@@ -95,7 +95,7 @@
                                         <?php }?>
                                       </select>
                                     </div>
-                                  </div>
+                                  </div> 
                                   <div class="form-group">
                                     <div class="form-row">
                                       <label style="margin-left:5px;">Cover Buku</label>  
@@ -113,7 +113,7 @@
                                     <p>Stock: <span id="demo"></span></p>
                                   </div>
                                   <div class="d-flex justify-content-center">
-                                  <button type="submit" value="submit" name="submit" class="btn btn-primary ">Tambah</button>
+                                  <button type="submit" value="submit" name="submit" class="btn btn-primary " style="background-color: #ba4148;">Tambah</button>
                                   </div>
                                 <?= form_close();?>
                                 </div>

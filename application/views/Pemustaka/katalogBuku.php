@@ -44,10 +44,8 @@
                         <a style="color: antiquewhite;"><?= $a['penerbit'] ?></a>
                         <a style="color: antiquewhite;"><?= $a['tahun'] ?></a>
                         <div>
-                          <div>
-                            <button><a class="btn-get-started scrollto" href=<?php echo base_url().'index.php/PemustakaCtl/keranjangBuku/'.$a['id_buku'];?>>Pinjam</a></button>
+                          <div><a class="btn btn-primary" style="background-color: #b13b42; border:none;" href=<?php echo base_url().'index.php/PemustakaCtl/keranjangBuku/'.$a['id_buku'];?>>Pinjam</a>
                           </div>
-                        <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
                         </div>
                     </div>
                     </div>

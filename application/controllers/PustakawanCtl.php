@@ -83,9 +83,6 @@ class PustakawanCtl extends CI_Controller {
 		    }else{ // gagal uploads
 			echo $this->upload->display_errors();
             }
-        
-        
-        
     }
     
     public function katalogBuku(){
@@ -97,5 +94,39 @@ class PustakawanCtl extends CI_Controller {
         $this->load->view('Pustakawan/katalogBuku', $data);
         $this->load->view('Pustakawan/footer');
         
+    }
+
+    public function reqPinjamMasuk(){
+        $this->load->model('Buku');
+        $session_data = $this->session->userdata('logged_in');
+        $getReqPinjam = $this->Buku->getReqPinjam();
+        $tesBuku = $this->Buku->getBuku();
+        //var_dump($getReqPinjam);
+        //die();
+        $this->load->view('Pustakawan/header');
+        $this->load->view('Pustakawan/reqPinjamMasuk', array(
+            "nama" => $session_data['namalengkap'],
+            "reqPinjam" => $getReqPinjam,
+            "tes" => $tesBuku
+        ));
+        $this->load->view('Pustakawan/footer');
+
+    }
+
+    public function setujuiPinjam($id_pinjam, $peminjam, $judulBuku){
+        $Buku = urldecode($judulBuku);
+        $orang = urldecode($peminjam);
+        //var_dump($id_pinjam, $Buku, $orang);   
+        //die();
+        $this->load->model('Buku');
+        $status = 1;
+        $pinjemin = $this->Buku->setujuPinjamkan($id_pinjam,$status);
+        if($pinjemin == TRUE){
+            echo "<script>alert('Berhasil meminjamkan buku ke $orang dengan Judul Buku $Buku ')</script>";
+            redirect('PustakawanCtl/reqPinjamMasuk');
+        }else{
+            echo "<script>alert('Gagal Meminjamkan')</script>";
+            redirect('PustakawanCtl/reqPinjamMasuk');
+        }
     }
 }

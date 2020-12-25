@@ -66,6 +66,7 @@
             <nav class="main-nav float-right d-none d-lg-block">
                 <ul>
                     <li><a href="<?= base_url() . 'index.php/PustakawanCtl/index';?>">Beranda</a></li>
+                    <li><a href="<?= base_url() . 'index.php/PustakawanCtl/reqPinjamMasuk';?>">Pinjam Buku</a></li>
                     <li class="drop-down"><a href="">Buku</a>
                         <ul>
                             <li class="drop-down"><a href="#">Kelola Buku</a>

@@ -25,7 +25,7 @@
     <link href="<?= base_url();?>/asset/NewBiz/assets/vendor/aos/aos.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="<?= base_url();?>/asset/NewBiz/assets/css/style.css" rel="stylesheet">
+    <link href="<?= base_url();?>/asset/NewBiz/css/style.css" rel="stylesheet">
 
     <!-- =======================================================
   * Template Name: NewBiz - v2.2.0
