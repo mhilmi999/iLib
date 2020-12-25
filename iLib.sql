@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 24, 2020 at 07:21 AM
+-- Generation Time: Dec 24, 2020 at 03:38 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -107,6 +107,27 @@ INSERT INTO `buku` (`id_buku`, `id_author`, `nama_buku`, `cover_book`, `amountTo
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `detail_peminjaman`
+--
+
+CREATE TABLE `detail_peminjaman` (
+  `id_detail` int(11) NOT NULL,
+  `id_pinjam` int(11) NOT NULL,
+  `id_buku` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `detail_peminjaman`
+--
+
+INSERT INTO `detail_peminjaman` (`id_detail`, `id_pinjam`, `id_buku`) VALUES
+(1, 1, 1),
+(2, 1, 7),
+(3, 1, 5);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `member`
 --
 
@@ -142,38 +163,19 @@ INSERT INTO `member` (`id_member`, `role`, `username`, `password`, `nama`, `nrp`
 CREATE TABLE `peminjaman` (
   `id_pinjam` int(11) NOT NULL,
   `id_member` int(11) NOT NULL,
-  `id_buku` int(11) NOT NULL,
-  `id_pustakawan` int(11) NOT NULL,
-  `tgl_pinjam` date DEFAULT current_timestamp(),
+  `tgl_pinjam` date DEFAULT NULL,
   `set_kembali` date DEFAULT NULL,
-  `tgl_kembali` date DEFAULT NULL
+  `tgl_kembali` date DEFAULT NULL,
+  `denda` decimal(10,0) DEFAULT NULL,
+  `status` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `peminjaman`
 --
 
-INSERT INTO `peminjaman` (`id_pinjam`, `id_member`, `id_buku`, `id_pustakawan`, `tgl_pinjam`, `set_kembali`, `tgl_kembali`) VALUES
-(1, 41, 1, 1, '2020-04-27', '2021-03-25', NULL),
-(2, 42, 2, 2, '2019-05-11', '2022-06-05', NULL),
-(3, 43, 3, 3, '2019-06-10', '2021-02-14', NULL),
-(4, 44, 4, 4, '2020-03-06', '2022-10-04', NULL),
-(5, 45, 5, 5, '2020-06-10', '2022-03-05', NULL),
-(6, 46, 6, 6, '2020-05-02', '2022-09-29', NULL),
-(7, 47, 7, 7, '2019-04-29', '2021-09-06', NULL),
-(8, 48, 8, 8, '2018-12-26', '2021-01-16', NULL),
-(9, 49, 9, 9, '2020-06-27', '2021-09-13', NULL),
-(10, 50, 10, 10, '2020-05-05', '2022-10-02', NULL),
-(11, 51, 11, 11, '2019-05-05', '2020-12-06', NULL),
-(12, 52, 12, 12, '2019-08-03', '2021-03-16', NULL),
-(13, 53, 13, 13, '2020-06-30', '2021-03-27', NULL),
-(14, 54, 14, 14, '2018-12-02', '2022-02-18', NULL),
-(15, 55, 15, 15, '2019-03-16', '2022-01-23', NULL),
-(16, 56, 16, 16, '2019-03-13', '2021-04-06', NULL),
-(17, 57, 17, 17, '2019-05-22', '2021-08-04', NULL),
-(18, 58, 18, 18, '2020-04-04', '2021-11-17', NULL),
-(19, 59, 19, 19, '2019-10-10', '2021-12-14', NULL),
-(20, 60, 20, 20, '2020-09-15', '2020-12-18', NULL);
+INSERT INTO `peminjaman` (`id_pinjam`, `id_member`, `tgl_pinjam`, `set_kembali`, `tgl_kembali`, `denda`, `status`) VALUES
+(1, 1, NULL, NULL, NULL, NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -193,6 +195,14 @@ ALTER TABLE `buku`
   ADD KEY `id_author` (`id_author`);
 
 --
+-- Indexes for table `detail_peminjaman`
+--
+ALTER TABLE `detail_peminjaman`
+  ADD PRIMARY KEY (`id_detail`),
+  ADD KEY `id_buku` (`id_buku`),
+  ADD KEY `id_pinjam` (`id_pinjam`);
+
+--
 -- Indexes for table `member`
 --
 ALTER TABLE `member`
@@ -203,9 +213,7 @@ ALTER TABLE `member`
 --
 ALTER TABLE `peminjaman`
   ADD PRIMARY KEY (`id_pinjam`),
-  ADD KEY `id_member` (`id_member`),
-  ADD KEY `id_buku` (`id_buku`),
-  ADD KEY `id_pustakawan` (`id_pustakawan`);
+  ADD KEY `id_member` (`id_member`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -224,6 +232,12 @@ ALTER TABLE `buku`
   MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
+-- AUTO_INCREMENT for table `detail_peminjaman`
+--
+ALTER TABLE `detail_peminjaman`
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
@@ -233,7 +247,7 @@ ALTER TABLE `member`
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -246,12 +260,11 @@ ALTER TABLE `buku`
   ADD CONSTRAINT `buku_ibfk_1` FOREIGN KEY (`id_author`) REFERENCES `author` (`id_author`);
 
 --
--- Constraints for table `peminjaman`
+-- Constraints for table `detail_peminjaman`
 --
-ALTER TABLE `peminjaman`
-  ADD CONSTRAINT `peminjaman_ibfk_1` FOREIGN KEY (`id_member`) REFERENCES `member` (`id_member`),
-  ADD CONSTRAINT `peminjaman_ibfk_2` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`id_buku`),
-  ADD CONSTRAINT `peminjaman_ibfk_3` FOREIGN KEY (`id_pustakawan`) REFERENCES `perpusFp`.`pustakawan` (`id_pustakawan`);
+ALTER TABLE `detail_peminjaman`
+  ADD CONSTRAINT `id_buku` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`id_buku`),
+  ADD CONSTRAINT `id_pinjam` FOREIGN KEY (`id_pinjam`) REFERENCES `peminjaman` (`id_pinjam`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
