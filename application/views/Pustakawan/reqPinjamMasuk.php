@@ -56,9 +56,9 @@
 
                                                 <td>
                                                 <?php foreach ($reqPinjam as $s){
-                                                    if ($s['id_member']==$r['id_member'])?>
+                                                    if ($s['id_member']==$r['id_member'] && $s['id_pinjam']==$r['id_pinjam']){?>
                                                         <li><?php echo $s['nama_buku'];?></li>
-                                                    <?php 
+                                                    <?php }
                                                 }?>
                                                         
                                                 </td>
