@@ -99,15 +99,24 @@ class PustakawanCtl extends CI_Controller {
     public function reqPinjamMasuk(){
         $this->load->model('Buku');
         $session_data = $this->session->userdata('logged_in');
+        // $getReqPinjam = $this->Buku->getReqPinjam();
+        // $tesBuku = $this->Buku->getBuku();
+        // //var_dump($getReqPinjam);
+        // //die();
+        // $this->load->view('Pustakawan/header');
+        // $this->load->view('Pustakawan/reqPinjamMasuk', array(
+        //     "nama" => $session_data['namalengkap'],
+        //     "reqPinjam" => $getReqPinjam,
+        //     "tes" => $tesBuku
+        // ));
+        // $this->load->view('Pustakawan/footer');
+        $peminjaman = $this->Buku->peminjaman();
         $getReqPinjam = $this->Buku->getReqPinjam();
-        $tesBuku = $this->Buku->getBuku();
-        //var_dump($getReqPinjam);
-        //die();
         $this->load->view('Pustakawan/header');
         $this->load->view('Pustakawan/reqPinjamMasuk', array(
             "nama" => $session_data['namalengkap'],
-            "reqPinjam" => $getReqPinjam,
-            "tes" => $tesBuku
+            "peminjaman" => $peminjaman,
+            "reqPinjam" => $getReqPinjam
         ));
         $this->load->view('Pustakawan/footer');
 

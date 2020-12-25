@@ -55,6 +55,18 @@ class Buku extends CI_Model
         return $res->result_array();
     }
 
+    function peminjaman(){
+        $thequery = "SELECT t1.*, t2.nama FROM peminjaman as t1 LEFT JOIN member as t2 ON t1.id_member=t2.id_member";
+        $res = $this->db->query($thequery);
+        return $res->result_array();
+    }
+
+    function getDetailPinjaman(){
+        $thequery = "SELECT * FROM detail_peminjaman";
+        $res = $this->db->query($thequery);
+        return $res->result_array();
+    }
+
     function setujuPinjamkan($id_pinjam, $status){
         $thequery = "UPDATE peminjaman SET `status` = $status WHERE `id_pinjam` = $id_pinjam";
         $res = $this->db->query($thequery);    

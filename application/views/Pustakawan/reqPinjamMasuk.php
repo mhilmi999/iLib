@@ -40,20 +40,33 @@
                                     <tbody>
                                         <?php
                                         
-                                        foreach ($reqPinjam as $r){
+                                        foreach ($peminjaman as $r){
                                         
                                         ?>
                                             <tr>
-                                                <td><?= $r['nama'];?></td>
+                                            <td>
+                                                <?php $flag=0;foreach ($reqPinjam as $s){
+                                                    
+                                                    if ($s['id_member']==$r['id_member'] && $flag==0){?>
+                                                    <?= $r['nama'];?>
+                                                        
+                                                    <?php $flag=1; }
+                                                }?>
+                                                </td>
 
                                                 <td>
-                                                        <ul><?= $r['nama_buku'];?></ul>
+                                                <?php foreach ($reqPinjam as $s){
+                                                    if ($s['id_member']==$r['id_member'])?>
+                                                        <li><?php echo $s['nama_buku'];?></li>
+                                                    <?php 
+                                                }?>
+                                                        
                                                 </td>
                                                 <!-- LOGIKA STATUS PEMINJAMAN -->
                                                 <?php if ($r['status'] == 0) : ?>
                                                 <td>
                                                     Membutuhkan Persetujuan
-                                                    <a class="btn btn-primary" style="background-color:#ba4148; border:none;" href="<?= base_url(). 'index.php/PustakawanCtl/setujuiPinjam/' .$r['id_pinjam'].'/'.$r['nama'].'/'.$r['nama_buku'];?>"> 
+                                                    <a class="btn btn-primary" style="background-color:#ba4148; border:none;" href="<?= base_url(). 'index.php/PustakawanCtl/setujuiPinjam/' .$r['id_pinjam'];?>"> 
                                                         Setuju 
                                                     </a>
                                                 </td>
