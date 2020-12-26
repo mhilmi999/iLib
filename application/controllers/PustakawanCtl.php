@@ -99,10 +99,10 @@ class PustakawanCtl extends CI_Controller {
         $session_data = $this->session->userdata('logged_in');
         $peminjaman = $this->Buku->peminjaman();
         $getReqPinjam = $this->Buku->getReqPinjam();
-        foreach ($peminjaman as $a){
+        foreach ($peminjaman as $a){    
             $d=strtotime("now");
             $a2=strtotime($a['tgl_kembali']);
-            if ($d > $a2){
+            if ($d > is_null($a2) == FALSE  && $a['status'] > 0){
                 $diff=$d-$a2;
                 $diff=(date("d",$diff));
                 $a['denda']=($diff)*500;
