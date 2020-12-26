@@ -44,36 +44,48 @@
                                         
                                         ?>
                                             <tr>
-                                            <td>
+                                                <!-- LOGIKA NAMA YANG AKAN DIPINJAM -->                                                
+                                                <td>
                                                 <?php $flag=0;foreach ($reqPinjam as $s){
-                                                    
+                                                    //echo $r['tgl_pinjam'];die();
                                                     if ($s['id_member']==$r['id_member'] && $flag==0){?>
                                                     <?= $r['nama'];?>
                                                         
                                                     <?php $flag=1; }
                                                 }?>
                                                 </td>
+                                                <!-- LOGIKA NAMA YANG AKAN DIPINJAM -->
 
-                                                <td>
+
+                                                <!-- LOGIKA TAMPILKAN BUKU APA SAJA YANG DIPINJAM -->
+                                                <td style="text-align: left;">
                                                 <?php foreach ($reqPinjam as $s){
                                                     if ($s['id_member']==$r['id_member'] && $s['id_pinjam']==$r['id_pinjam']){?>
                                                         <li><?php echo $s['nama_buku'];?></li>
                                                     <?php }
                                                 }?>
-                                                        
                                                 </td>
+                                                <!-- LOGIKA TAMPILKAN BUKU APA SAJA YANG DIPINJAM -->
+                                                
+                                                
+                                                
                                                 <!-- LOGIKA STATUS PEMINJAMAN -->
                                                 <?php if ($r['status'] == 0) : ?>
                                                 <td>
-                                                    Membutuhkan Persetujuan
                                                     <a class="btn btn-primary" style="background-color:#ba4148; border:none;" href="<?= base_url(). 'index.php/PustakawanCtl/setujuiPinjam/' .$r['id_pinjam'];?>"> 
-                                                        Setuju 
+                                                    Butuh Persetujuan
                                                     </a>
                                                 </td>
                                                 <?php elseif ($r['status'] == 1) : ?>
-                                                <td>
-                                                    Dipinjam
-                                                </td>
+                                                    <?php if($r['tgl_pinjam'] == NULL) :?>
+                                                        <td>
+                                                            Menunggu Buku diambil
+                                                        </td>
+                                                    <?php else: ?>
+                                                        <td>
+                                                            Sedang Dipinjam
+                                                        </td>
+                                                    <?php endif;?>
                                                 <?php elseif ($r['status'] == 2) : ?>
                                                 <td>
                                                     Deadline kembali
@@ -87,17 +99,29 @@
                                                     Sudah Mengembalikan
                                                 </td>    
                                                 <?php endif;?>
+                                                <!-- LOGIKA STATUS PEMINJAMAN -->
+
+
 
                                                 <!-- LOGIKA TANGGAL PEMINJAMAN -->
-                                                <?php if ($r['tgl_pinjam'] == NULL) : ?>
-                                                <td>
-                                                    Belum disetujui
-                                                </td>
+                                                <?php if ($r['tgl_pinjam'] == NULL && $r['status'] == 0 ) : ?> 
+                                                                <td>
+                                                                    Belum disetujui
+                                                                </td>
+                                                <?php elseif ($r['tgl_pinjam'] == NULL && $r['status'] == 1) : ?>
+                                                                <td>
+                                                                    <a class="btn btn-primary" style="background-color:#ba4148; border:none;" href="<?= base_url(). 'index.php/PustakawanCtl/mulaiPinjam/'.$r['id_pinjam'] ;?>"> 
+                                                                    Ambil Buku?
+                                                                    </a>
+                                                                </td>        
                                                 <?php else : ?>
-                                                    <td>
-                                                        BLM BUAT LOGIC TANGGAL PINJAM
-                                                    </td>
+                                                            <td>
+                                                                <?= date('d/m/Y',strtotime($r['tgl_pinjam']));?>
+                                                            </td>
                                                 <?php endif;?>
+                                                <!-- LOGIKA TANGGAL PEMINJAMAN -->
+
+                                                
 
                                                 <!-- LOGIKA TANGGAL KEMBALI -->
                                                 <?php if($r['tgl_kembali'] == NULL) : ?>
@@ -106,7 +130,7 @@
                                                 </td>
                                                 <?php else : ?>
                                                     <td>
-                                                        BLM BUAT LOGIC TANGGAL KEMBALI
+                                                        <?= date('d/m/Y',strtotime($r['tgl_kembali']));?>
                                                     </td>
                                                 <?php endif;?>
 
@@ -128,4 +152,5 @@
                             </div>
                         </div>
     </div>
+
 </section>

@@ -61,22 +61,35 @@ class Buku extends CI_Model
         return $res->result_array();
     }
 
-    function getDetailPinjaman(){
-        $thequery = "SELECT * FROM detail_peminjaman";
+    function getDetailPinjaman($id_pinjam){
+        $thequery = "SELECT * FROM peminjaman WHERE id_pinjam = $id_pinjam";
         $res = $this->db->query($thequery);
         return $res->result_array();
     }
 
     function setujuPinjamkan($id_pinjam, $status){
         $thequery = "UPDATE peminjaman SET `status` = $status WHERE `id_pinjam` = $id_pinjam";
-        $res = $this->db->query($thequery);    
+        $this->db->query($thequery);    
+        return TRUE;
     }
 
-    function cekJumlahBukuDipinjam(){
-        $q = "SELECT t1.id_buku, t1.id_pinjam, t2.nama_buku FROM detail_peminjaman t1 JOIN buku t2  WHERE t1.id_buku = t2.id_buku";
+    function cekJumlahBukuDipinjam($id_pinjam){
+        $q = "SELECT COUNT(t1.id_buku) FROM detail_peminjaman t1 JOIN buku t2 ON t1.id_pinjam = $id_pinjam WHERE t1.id_buku = t2.id_buku";
         $res = $this->db->query($q);
         return $res->result_array();
+    
     }
 
+    function mulaiWaktuPinjam($id_pinjam, $jumlah){
+        $q = "UPDATE peminjaman SET `tgl_pinjam` = NOW(), `tgl_kembali` = DATE_ADD(NOW(), INTERVAL $jumlah WEEK)  WHERE `id_pinjam` = $id_pinjam";
+        $this->db->query($q);
+        return TRUE;
+    }
+
+    function tambahDenda($id_pinjam){
+        $q = "UPDATE peminjaman SET denda = '5000' WHERE id_pinjam = $id_pinjam";
+        $this->db->query($q);
+        return TRUE;
+    }
     
 }

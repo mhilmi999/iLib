@@ -99,19 +99,10 @@ class PustakawanCtl extends CI_Controller {
     public function reqPinjamMasuk(){
         $this->load->model('Buku');
         $session_data = $this->session->userdata('logged_in');
-        // $getReqPinjam = $this->Buku->getReqPinjam();
-        // $tesBuku = $this->Buku->getBuku();
-        // //var_dump($getReqPinjam);
-        // //die();
-        // $this->load->view('Pustakawan/header');
-        // $this->load->view('Pustakawan/reqPinjamMasuk', array(
-        //     "nama" => $session_data['namalengkap'],
-        //     "reqPinjam" => $getReqPinjam,
-        //     "tes" => $tesBuku
-        // ));
-        // $this->load->view('Pustakawan/footer');
         $peminjaman = $this->Buku->peminjaman();
         $getReqPinjam = $this->Buku->getReqPinjam();
+        //var_dump($getReqPinjam[0]['tgl_pinjam']);
+        //die();
         $this->load->view('Pustakawan/header');
         $this->load->view('Pustakawan/reqPinjamMasuk', array(
             "nama" => $session_data['namalengkap'],
@@ -122,20 +113,45 @@ class PustakawanCtl extends CI_Controller {
 
     }
 
-    public function setujuiPinjam($id_pinjam, $peminjam, $judulBuku){
-        $Buku = urldecode($judulBuku);
-        $orang = urldecode($peminjam);
+    public function setujuiPinjam($id_pinjam){
         //var_dump($id_pinjam, $Buku, $orang);   
         //die();
         $this->load->model('Buku');
         $status = 1;
         $pinjemin = $this->Buku->setujuPinjamkan($id_pinjam,$status);
-        if($pinjemin == TRUE){
-            echo "<script>alert('Berhasil meminjamkan buku ke $orang dengan Judul Buku $Buku ')</script>";
-            redirect('PustakawanCtl/reqPinjamMasuk');
-        }else{
+        if(!$pinjemin){
             echo "<script>alert('Gagal Meminjamkan')</script>";
             redirect('PustakawanCtl/reqPinjamMasuk');
+        }else{
+            echo "<script>alert('Berhasil Mememesankan Buku ')</script>";
+            redirect('PustakawanCtl/reqPinjamMasuk');
         }
+    }
+
+    public function mulaiPinjam($id_pinjam){
+        $this->load->model('Buku');
+        $jumlahBuku = $this->Buku->cekJumlahBukuDipinjam($id_pinjam);
+        
+        $jumlah = $jumlahBuku[0]['COUNT(t1.id_buku)'];
+
+        $kirimWaktu = $this->Buku->mulaiWaktuPinjam($id_pinjam, $jumlah);
+
+        
+        if($kirimWaktu == TRUE){
+            
+            
+            echo "Dipinjamkan";
+            $this->reqPinjamMasuk();
+        }else{
+            echo "Belum berhasil";
+            $this->reqPinjamMasuk();
+        }
+    }
+
+    public function denda(){
+       /* $this->load->model('Buku');
+        $getReqPinjam = $this->Buku->getReqPinjam();
+        var_dump($getReqPinjam);
+        die();*/
     }
 }
