@@ -86,8 +86,8 @@ class Buku extends CI_Model
         return TRUE;
     }
 
-    function tambahDenda($id_pinjam){
-        $q = "UPDATE peminjaman SET denda = '5000' WHERE id_pinjam = $id_pinjam";
+    function tambahDenda($id_pinjam, $denda){
+        $q = "UPDATE peminjaman SET denda = $denda WHERE id_pinjam = $id_pinjam";
         $this->db->query($q);
         return TRUE;
     }

@@ -101,6 +101,25 @@ class PustakawanCtl extends CI_Controller {
         $session_data = $this->session->userdata('logged_in');
         $peminjaman = $this->Buku->peminjaman();
         $getReqPinjam = $this->Buku->getReqPinjam();
+        foreach ($peminjaman as $a){
+            $d=strtotime("now");
+            $a2=strtotime($a['tgl_kembali']);
+            //echo "Created date is " . date("Y-m-d h:i:sa", $a2);
+            //die;
+            if ($d > $a2){
+                //$x=now();
+                //$diff=date_diff($x, $a['tgl_kembali']);
+                $diff=$d-$a2;
+                $diff=(date("d",$diff));
+                //echo (date("d",$diff));
+                //die;
+                //$a=$diff->format("%a");
+                //$b=$d->format("%a");
+                $a['denda']=($diff)*500;
+                $c=$this->Buku->tambahDenda($a['id_pinjam'], $a['denda']);
+            }
+        }
+        $peminjaman = $this->Buku->peminjaman();
         //var_dump($getReqPinjam[0]['tgl_pinjam']);
         //die();
         $this->load->view('Pustakawan/header');
@@ -138,10 +157,10 @@ class PustakawanCtl extends CI_Controller {
 
         
         if($kirimWaktu == TRUE){
-            
-            
             echo "Dipinjamkan";
-            $this->reqPinjamMasuk();
+            $_SESSION['flash']='Dipinjamkan';
+            redirect('PustakawanCtl/reqPinjamMasuk');
+            //$this->reqPinjamMasuk();
         }else{
             echo "Belum berhasil";
             $this->reqPinjamMasuk();

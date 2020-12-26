@@ -17,6 +17,9 @@
                 <li>Pustakawan</li>
             </ol>
         </div>
+        <?php if (isset($_SESSION['flash'])){?>
+                <br><div class="alert alert-success" role="alert"><?=$_SESSION['flash'];unset($_SESSION['flash']);?></div>
+            <?php } ?>
         <br>
 
         <!-- DataTales Example -->
@@ -141,7 +144,8 @@
                                                 </td>
                                                 <?php else : ?>
                                                     <td>
-                                                        Rp <?= $r['denda'];?>
+                                                        
+                                                        Rp<?= number_format($r['denda'],2);?>
                                                     </td>
                                                 <?php endif;?>
                                             </tr>
