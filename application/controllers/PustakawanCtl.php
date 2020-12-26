@@ -67,8 +67,6 @@ class PustakawanCtl extends CI_Controller {
 		$new_name = time().'_'.$_FILES['photo']['name'];
 		$config['file_name'] = $new_name;
 
-        //var_dump($config);
-        //die();
 		$this->load->library('upload', $config);
 		if ($this->upload->do_upload('photo')) {   //berhasil upload
 			$data = array('upload_data' => $this->upload->data($new_name));
@@ -104,24 +102,15 @@ class PustakawanCtl extends CI_Controller {
         foreach ($peminjaman as $a){
             $d=strtotime("now");
             $a2=strtotime($a['tgl_kembali']);
-            //echo "Created date is " . date("Y-m-d h:i:sa", $a2);
-            //die;
             if ($d > $a2){
-                //$x=now();
-                //$diff=date_diff($x, $a['tgl_kembali']);
                 $diff=$d-$a2;
                 $diff=(date("d",$diff));
-                //echo (date("d",$diff));
-                //die;
-                //$a=$diff->format("%a");
-                //$b=$d->format("%a");
                 $a['denda']=($diff)*500;
                 $c=$this->Buku->tambahDenda($a['id_pinjam'], $a['denda']);
             }
         }
         $peminjaman = $this->Buku->peminjaman();
-        //var_dump($getReqPinjam[0]['tgl_pinjam']);
-        //die();
+        
         $this->load->view('Pustakawan/header');
         $this->load->view('Pustakawan/reqPinjamMasuk', array(
             "nama" => $session_data['namalengkap'],
@@ -133,8 +122,7 @@ class PustakawanCtl extends CI_Controller {
     }
 
     public function setujuiPinjam($id_pinjam){
-        //var_dump($id_pinjam, $Buku, $orang);   
-        //die();
+        
         $this->load->model('Buku');
         $status = 1;
         $pinjemin = $this->Buku->setujuPinjamkan($id_pinjam,$status);
@@ -167,10 +155,4 @@ class PustakawanCtl extends CI_Controller {
         }
     }
 
-    public function denda(){
-       /* $this->load->model('Buku');
-        $getReqPinjam = $this->Buku->getReqPinjam();
-        var_dump($getReqPinjam);
-        die();*/
-    }
 }

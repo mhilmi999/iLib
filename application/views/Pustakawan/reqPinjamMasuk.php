@@ -137,8 +137,10 @@
                                                     </td>
                                                 <?php endif;?>
 
+
+
                                                 <!-- LOGIKA DENDA -->                                                
-                                                <?php if ($r['denda'] == NULL) :?>
+                                                <?php if ($r['denda'] == NULL && $r['tgl_pinjam'] == NULL)  :?>
                                                 <td>
                                                     Belum ada
                                                 </td>
