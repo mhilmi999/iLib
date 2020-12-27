@@ -49,7 +49,7 @@
                                             <tr>
                                                 <!-- LOGIKA NAMA YANG AKAN DIPINJAM -->                                                
                                                 <td>
-                                                <?php $flag=0;foreach ($reqPinjam as $s){
+                                                <?php $flag=0; foreach ($reqPinjam as $s){
                                                     //echo $r['tgl_pinjam'];die();
                                                     if ($s['id_member']==$r['id_member'] && $flag==0){?>
                                                     <?= $r['nama'];?>

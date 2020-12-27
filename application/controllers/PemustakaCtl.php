@@ -5,8 +5,6 @@ class PemustakaCtl extends CI_Controller {
 
     public function index(){
         $session_data = $this->session->userdata('logged_in');
-        //var_dump($session_data['namalengkap']);
-        //die();
         $this->load->view('Pemustaka/header');
         $this->load->view('Pemustaka/index', array(
             "nama" => $session_data['namalengkap'],
@@ -27,7 +25,6 @@ class PemustakaCtl extends CI_Controller {
             "nrp" => $session_data['nrp'],
             "role" => $session_data['role']
         ));
-        //$this->load->view('Pemustaka/footer');   
     }
     
     public function cetakKartu(){
@@ -61,12 +58,9 @@ class PemustakaCtl extends CI_Controller {
         }else if($id_buku != -1){
             array_push($_SESSION['cart'], $id_buku);
         }
-        //var_dump($_SESSION['cart']);
-        //die;
         $this->load->model('Buku');
         $data['buku']=$this->Buku->getBuku();
         $this->load->view('Pemustaka/header');
-        //var_dump($buku);
         $this->load->view('Pemustaka/keranjangBuku', $data);
         $this->load->view('Pemustaka/footer');
     }
@@ -83,13 +77,11 @@ class PemustakaCtl extends CI_Controller {
                 }
             }
         }
-        //var_dump(array($_SESSION['cart']));
         redirect('PemustakaCtl/keranjangBuku');
     }
 
     public function hapusKeranjang(){
         unset($_SESSION['cart']);
-        //var_dump(array($_SESSION['cart']));
         redirect('PemustakaCtl/keranjangBuku');
     }
 
@@ -97,15 +89,34 @@ class PemustakaCtl extends CI_Controller {
         if (!isset($_SESSION['cart'])){
             redirect('PemustakaCtl/keranjangBuku', 'refresh');
         }
-        //$data=$_SESSION['cart'];
-        //unset($_SESSION['cart']);
         $this->load->model('Buku');
         $pinjam=$this->Buku->reqPinjam();
-        //if ()
-        //var_dump(array($_SESSION['cart']));
         if ($pinjam){
             redirect('PemustakaCtl/keranjangBuku');
         }else die;
         
+    }
+
+    public function historiPinjamBuku(){
+        $this->load->model('Buku');
+        $session_data = $this->session->userdata('logged_in');
+        //echo "Sudah sampai di histori pinjam nih :)";
+        $bukuKu = $this->Buku->historiPinjamBukuKu($session_data['id_user']);
+        $detail = $this->Buku->detailPinjam($session_data['id_user']);
+        //$jumlah = count($bukuKu['id_pinjam']);
+        //var_dump($detail);
+        //die();
+        
+        if(is_null($bukuKu) == FALSE){
+            $this->load->view('Pemustaka/header');
+            $this->load->view('Pemustaka/historiPinjam', array(
+                "nama" => $session_data['namalengkap'],
+                "bukuKu" => $bukuKu,
+                "detail" => $detail,
+                "id_user" => $session_data['id_user']
+            ));
+            $this->load->view('Pemustaka/footer');
+
+        }
     }
 }
