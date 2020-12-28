@@ -97,7 +97,7 @@ class PemustakaCtl extends CI_Controller {
         
     }
 
-    public function historiPinjamBuku(){
+    public function historiPinjamBukus(){
         $this->load->model('Buku');
         $session_data = $this->session->userdata('logged_in');
         //echo "Sudah sampai di histori pinjam nih :)";
@@ -112,6 +112,38 @@ class PemustakaCtl extends CI_Controller {
             $this->load->view('Pemustaka/historiPinjam', array(
                 "nama" => $session_data['namalengkap'],
                 "bukuKu" => $bukuKu,
+                "detail" => $detail,
+                "id_user" => $session_data['id_user']
+            ));
+            $this->load->view('Pemustaka/footer');
+
+        }
+    }
+
+    public function historiPinjamBuku(){
+        $this->load->model('Buku');
+        $session_data = $this->session->userdata('logged_in');
+        $peminjaman = $this->Buku->peminjamanUser($session_data['id_user']);
+        $detail = $this->Buku->detailPinjam($session_data['id_user']);
+        
+        //update denda
+        foreach ($peminjaman as $a){    
+            $d=strtotime("now");
+            $a2=strtotime($a['tgl_kembali']);
+            if ($d > is_null($a2) == FALSE  && $a['status'] > 0){
+                $diff=$d-$a2;
+                $diff=(date("d",$diff));
+                $a['denda']=($diff)*500;
+                $c=$this->Buku->tambahDenda($a['id_pinjam'], $a['denda']);
+            }
+        }
+        $peminjaman = $this->Buku->peminjamanUser($session_data['id_user']);
+        
+        if(is_null($peminjaman) == FALSE){
+            $this->load->view('Pemustaka/header');
+            $this->load->view('Pemustaka/historiPinjam', array(
+                "nama" => $session_data['namalengkap'],
+                "peminjaman" => $peminjaman,
                 "detail" => $detail,
                 "id_user" => $session_data['id_user']
             ));
