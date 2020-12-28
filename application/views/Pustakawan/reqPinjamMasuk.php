@@ -91,7 +91,7 @@
                                                     <?php endif;?>
                                                 <?php elseif ($r['status'] == 2) : ?>
                                                 <td>
-                                                    Deadline kembali
+                                                    Sudah diambil
                                                 </td>
                                                 <?php elseif ($r['status'] == 3) : ?>
                                                 <td>

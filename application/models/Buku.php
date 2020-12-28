@@ -81,7 +81,7 @@ class Buku extends CI_Model
     }
 
     function mulaiWaktuPinjam($id_pinjam, $jumlah){
-        $q = "UPDATE peminjaman SET `tgl_pinjam` = NOW(), `tgl_kembali` = DATE_ADD(NOW(), INTERVAL $jumlah WEEK)  WHERE `id_pinjam` = $id_pinjam";
+        $q = "UPDATE peminjaman SET `tgl_pinjam` = NOW(), `tgl_kembali` = DATE_ADD(NOW(), INTERVAL $jumlah WEEK), `status`=2  WHERE `id_pinjam` = $id_pinjam";
         $this->db->query($q);
         return TRUE;
     }

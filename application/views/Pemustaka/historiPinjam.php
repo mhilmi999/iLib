@@ -40,10 +40,16 @@
                                 </div>
                                 <div class="col-auto">
                                     <?php if($d['status'] == 1 && $d['denda']==NULL){ ?>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">Sedang dipinjam</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">Menunggu diambil</div>
                                     <?php } ?>
                                     <?php if($d['status'] == 1 && $d['denda']!=NULL){ ?>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">Kena Denda Rp<?= number_format($d['denda'],2);?></div>
+                                    <?php } ?>
+                                    <?php if($d['status'] == 0){ ?>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">Menunggu Persetujuan</div>
+                                    <?php } ?>
+                                    <?php if($d['status'] == 2){ ?>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">Sedang dipinjam</div>
                                     <?php } ?>
                                 </div>
                             </div>
