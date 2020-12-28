@@ -10,6 +10,12 @@
       <!-- Favicons -->
     <link href="<?= base_url();?>/asset/NewBiz/img/favicon.png" rel="icon">
     <link href="<?= base_url();?>/asset/NewBiz/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <style>
+        @media print {
+            #printPageButton {
+                display: none;}
+        }
+    </style>
 </head>
 
 <body>

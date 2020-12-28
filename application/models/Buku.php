@@ -91,21 +91,6 @@ class Buku extends CI_Model
         $this->db->query($q);
         return TRUE;
     }
-
-    // function historiPinjamBukuKu($id_member){
-    //     $q = "SELECT t1.*, t2.id_buku, t3.nama_buku, t4.id_member FROM peminjaman t1 JOIN 
-    //             detail_peminjaman t2 ON t1.id_pinjam = t2.id_pinjam LEFT JOIN 
-    //             buku t3 ON t2.id_buku=t3.id_buku LEFT JOIN member t4 ON t1.id_member = t4.id_member 
-    //             WHERE t4.id_member = $id_member";
-    //     $res = $this->db->query($q);
-    //     return $res->result_array();
-    // }
-
-    // function detailPinjam($id_member){
-    //     $q = "SELECT t1.id_pinjam,t1.tgl_pinjam, t2.* FROM peminjaman t1 JOIN detail_peminjaman t2 ON t1.id_pinjam = t2.id_pinjam WHERE t1.id_member = $id_member";
-    //     $res = $this->db->query($q);
-    //     return $res->result_array();
-    // }
     
     function peminjamanUser($id_member=-1){
         $q="SELECT t1.*, t2.nama FROM peminjaman as t1 JOIN member as t2 on (t1.id_member=$id_member && t2.id_member=$id_member) ";

@@ -10,6 +10,12 @@
       <!-- Favicons -->
     <link href="<?= base_url();?>/asset/NewBiz/img/favicon.png" rel="icon">
     <link href="<?= base_url();?>/asset/NewBiz/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <style>
+        @media print {
+            #printPageButton {
+                display: none;}
+        }
+    </style>
 </head>
 
 <body>
@@ -23,9 +29,9 @@
         <p class="tentang">No. Hp :<?= $no_hp;?></p>
         <p class="tentang">Departemen :<?= $departemen;?></p>
         <p style="text-align:center; margin-left:0px;"  class="tentang">Kartu ini merupakan tanda sah Keanggotaan Perpustakaan iLib </p>
-        <button onclick="window.print();" class="pesan-btn">Cetak</button>
-
+        <br>
     </div>
+    <button onclick="window.print();" id="printPageButton" class="pesan-btn">Cetak</button>
     <!-- partial -->
      
 </body>

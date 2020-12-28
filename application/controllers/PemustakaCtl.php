@@ -97,29 +97,7 @@ class PemustakaCtl extends CI_Controller {
         
     }
 
-    public function historiPinjamBukus(){
-        $this->load->model('Buku');
-        $session_data = $this->session->userdata('logged_in');
-        //echo "Sudah sampai di histori pinjam nih :)";
-        $bukuKu = $this->Buku->historiPinjamBukuKu($session_data['id_user']);
-        $detail = $this->Buku->detailPinjam($session_data['id_user']);
-        //$jumlah = count($bukuKu['id_pinjam']);
-        //var_dump($detail);
-        //die();
-        
-        if(is_null($bukuKu) == FALSE){
-            $this->load->view('Pemustaka/header');
-            $this->load->view('Pemustaka/historiPinjam', array(
-                "nama" => $session_data['namalengkap'],
-                "bukuKu" => $bukuKu,
-                "detail" => $detail,
-                "id_user" => $session_data['id_user']
-            ));
-            $this->load->view('Pemustaka/footer');
-
-        }
-    }
-
+   
     public function historiPinjamBuku(){
         $this->load->model('Buku');
         $session_data = $this->session->userdata('logged_in');
@@ -148,7 +126,24 @@ class PemustakaCtl extends CI_Controller {
                 "id_user" => $session_data['id_user']
             ));
             $this->load->view('Pemustaka/footer');
-
+            
         }
+    }
+    
+    public function invoice(){
+        $session_data = $this->session->userdata('logged_in');
+        $this->load->view('Pemustaka/header');
+        $this->load->view('Pemustaka/invoice', array(
+            "nama" => $session_data['namalengkap']
+        ));
+        $this->load->view('Pemustaka/footer');
+    }
+    
+    public function cetakInvoice(){
+        $session_data = $this->session->userdata('logged_in');
+        $this->load->view('Pemustaka/cetakInvoice', array(
+            "nama" => $session_data['namalengkap']
+        ));
+
     }
 }
