@@ -7,117 +7,111 @@
     <link href="<?= base_url();?>/asset/NewBiz/img/favicon.png" rel="icon">
     <link href="<?= base_url();?>/asset/NewBiz/img/apple-touch-icon.png" rel="apple-touch-icon">
     <style>
-        .invoice-box {
-            max-width: 800px;
-            margin: auto;
-            padding: 30px;
-            border: 1px solid #eee;
-            box-shadow: 0 0 10px rgba(0, 0, 0, .15);
-            font-size: 16px;
-            line-height: 24px;
-            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-            color: #555;
+        @media print {
+            #printPageButton {
+                display: none;}
         }
 
-        .invoice-box table {
-            width: 100%;
-            line-height: inherit;
-            text-align: left;
-        }
+            .invoice-box {
+                max-width: 800px;
+                margin: auto;
+                padding: 30px;
+                border: 1px solid #eee;
+                box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+                font-size: 16px;
+                line-height: 24px;
+                font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+                color: #555;
+            }
 
-        .invoice-box table td {
-            padding: 5px;
-            vertical-align: top;
-        }
-
-        .invoice-box table tr td:nth-child(2) {
-            text-align: right;
-        }
-
-        .invoice-box table tr.top table td {
-            padding-bottom: 20px;
-        }
-
-        .invoice-box table tr.top table td.title {
-            font-size: 45px;
-            line-height: 45px;
-            color: #333;
-        }
-
-        .invoice-box table tr.information table td {
-            padding-bottom: 40px;
-        }
-
-        .invoice-box table tr.heading td {
-            background: #eee;
-            border-bottom: 1px solid #ddd;
-            font-weight: bold;
-        }
-
-        .invoice-box table tr.details td {
-            padding-bottom: 20px;
-        }
-
-        .invoice-box table tr.item td {
-            border-bottom: 1px solid #eee;
-        }
-
-        .invoice-box table tr.item.last td {
-            border-bottom: none;
-        }
-
-        .invoice-box table tr.total td:nth-child(2) {
-            border-top: 2px solid #eee;
-            font-weight: bold;
-        }
-
-        @media only screen and (max-width: 600px) {
-            .invoice-box table tr.top table td {
+            .invoice-box table {
                 width: 100%;
-                display: block;
-                text-align: center;
+                line-height: inherit;
+                text-align: left;
+            }
+
+            .invoice-box table td {
+                padding: 5px;
+                vertical-align: top;
+            }
+
+            .invoice-box table tr td:nth-child(2) {
+                text-align: right;
+            }
+
+            .invoice-box table tr.top table td {
+                padding-bottom: 20px;
+            }
+
+            .invoice-box table tr.top table td.title {
+                font-size: 45px;
+                line-height: 45px;
+                color: #333;
             }
 
             .invoice-box table tr.information table td {
-                width: 100%;
-                display: block;
-                text-align: center;
+                padding-bottom: 40px;
             }
-        }
 
-        /** RTL **/
-        .rtl {
-            direction: rtl;
-            font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-        }
+            .invoice-box table tr.heading td {
+                background: #eee;
+                border-bottom: 1px solid #ddd;
+                font-weight: bold;
+            }
 
-        .rtl table {
-            text-align: right;
-        }
+            .invoice-box table tr.details td {
+                padding-bottom: 20px;
+            }
 
-        .rtl table tr td:nth-child(2) {
-            text-align: left;
-        }
+            .invoice-box table tr.item td {
+                border-bottom: 1px solid #eee;
+            }
+
+            .invoice-box table tr.item.last td {
+                border-bottom: none;
+            }
+
+            .invoice-box table tr.total td:nth-child(2) {
+                border-top: 2px solid #eee;
+                font-weight: bold;
+            }
+
+            @media only screen and (max-width: 600px) {
+                .invoice-box table tr.top table td {
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                }
+
+                .invoice-box table tr.information table td {
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                }
+            }
+
+            /** RTL **/
+            .rtl {
+                direction: rtl;
+                font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            }
+
+            .rtl table {
+                text-align: right;
+            }
+
+            .rtl table tr td:nth-child(2) {
+                text-align: left;
+            }
     </style>
 </head>
-
+<?php foreach ($peminjaman as $a) { ?>
+<br>
+<br>
+<br>
 <body>
     <main id="main">
 
-        <!-- ======= Breadcrumbs Section ======= -->
-        <section class="breadcrumbs">
-            <div class="container">
-
-                <div class="d-flex justify-content-between align-items-center">
-                    <h2>Pemustaka</h2>
-                    <ol>
-                        <li><a href="index.html">Cetak Invoice</a></li>
-                        <li>Pemustaka</li>
-                    </ol>
-                </div>
-
-            </div>
-        </section>
 
         <section>
             <br>
@@ -134,9 +128,26 @@
                                     <td>
                                         Invoice Untuk : <?= $nama; ?><br>
                                         Dicetak Pada : <?= date('d-m-Y', strtotime("now")); ?><br>
+                                        <?php if (is_null($a['tgl_kembali'])==FALSE) { ?>
                                         Tanggal Kembali : 15/12/2020 <br>
-                                        Status       : Lewat Deadline
-
+                                        <?php } ?>
+                                        <?php 
+                                            if($a['status']==0){
+                                                echo "Status : Menunggu Persetujuan";
+                                            }
+                                            elseif($a['status']==1){
+                                                echo "Status : Menunggu Diambil";
+                                            }
+                                            elseif($a['status']==2){
+                                                echo "Status : Sedang Dipinjam";
+                                            }
+                                            elseif($a['status']==3){
+                                                echo "Status : Lewat Tenggat Waktu";
+                                            }
+                                            elseif($a['status']==4){
+                                                echo "Status : Sudah Kembali";
+                                            }
+                                         ?>
                                     </td>
                                 </tr>
                             </table>
@@ -151,7 +162,7 @@
                                         Gedung Perpustakaan ITS<br>
                                         Kampus ITS, Keputih, <br>
                                         Sukolilo-Surabaya 60111.<br>
-                                         Jawa Timur, Indonesia.<br>
+                                        Jawa Timur, Indonesia.<br>
                                     </td>
 
                                     <td>
@@ -179,7 +190,7 @@
                         </td>
 
                         <td>
-                            Rp6.000
+                            Rp<?= number_format($a['denda'],2);?>
                         </td>
                     </tr>
 
@@ -194,12 +205,14 @@
                     </tr>
 
                     <tr class="item">
+                        <?php foreach ($detail as $b) { ?>
                         <td>
-                            Shopping with Dad
+                            <?= $b['nama_buku']; ?>
                         </td>
+                        <?php } ?>
 
                         <td>
-                            3 
+                            1
                         </td>
                     </tr>
 
@@ -207,7 +220,7 @@
                         <td></td>
 
                         <td>
-                            Total: Rp6.000
+                            
                         </td>
                     </tr>
                 </table>
@@ -216,11 +229,11 @@
         </section>
     </main>
     <div class="col-md-12 text-center">
-        <a class=" btn btn-info" style="margin:auto;" href="<?= base_url().'index.php/PemustakaCtl/cetakInvoice';?>">Cetak</a>
+        <a class=" btn btn-info" style="margin:auto;" href="<?= base_url().'index.php/PemustakaCtl/cetakInvoice/'.$a['id_pinjam'];?>">Cetak</a>
     </div>
     <br>
     <br>
 
 </body>
-
+<?php } ?>
 </html>

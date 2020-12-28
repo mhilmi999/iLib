@@ -105,7 +105,7 @@
             }
     </style>
 </head>
-
+<?php foreach ($peminjaman as $a) { ?>
 <body>
     <main id="main">
 
@@ -125,8 +125,26 @@
                                     <td>
                                         Invoice Untuk : <?= $nama; ?><br>
                                         Dicetak Pada : <?= date('d-m-Y', strtotime("now")); ?><br>
+                                        <?php if (is_null($a['tgl_kembali'])==FALSE) { ?>
                                         Tanggal Kembali : 15/12/2020 <br>
-                                        Status : Lewat Deadline
+                                        <?php } ?>
+                                        <?php 
+                                            if($a['status']==0){
+                                                echo "Status : Menunggu Persetujuan";
+                                            }
+                                            elseif($a['status']==1){
+                                                echo "Status : Menunggu Diambil";
+                                            }
+                                            elseif($a['status']==2){
+                                                echo "Status : Sedang Dipinjam";
+                                            }
+                                            elseif($a['status']==3){
+                                                echo "Status : Lewat Tenggat Waktu";
+                                            }
+                                            elseif($a['status']==4){
+                                                echo "Status : Sudah Kembali";
+                                            }
+                                         ?>
                                     </td>
                                 </tr>
                             </table>
@@ -169,7 +187,7 @@
                         </td>
 
                         <td>
-                            Rp6.000
+                            Rp<?= number_format($a['denda'],2);?>
                         </td>
                     </tr>
 
@@ -184,12 +202,14 @@
                     </tr>
 
                     <tr class="item">
+                        <?php foreach ($detail as $b) { ?>
                         <td>
-                            Shopping with Dad
+                            <?= $b['nama_buku']; ?>
                         </td>
+                        <?php } ?>
 
                         <td>
-                            3
+                            1
                         </td>
                     </tr>
 
@@ -197,7 +217,7 @@
                         <td></td>
 
                         <td>
-                            Total: Rp6.000
+                            
                         </td>
                     </tr>
                 </table>
@@ -212,5 +232,6 @@
     <br>
 
 </body>
+<?php } ?>
 
 </html>
