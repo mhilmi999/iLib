@@ -103,4 +103,20 @@ class Buku extends CI_Model
         $res = $this->db->query($q);
         return $res->result_array();
     }
+
+    function getPeminjamanInvoice($id_pinjam){
+        $q = "SELECT * FROM `peminjaman` WHERE id_pinjam = $id_pinjam";
+        $res = $this->db->query($q);
+        return $res->result_array();
+    }
+    
+    function getDetailPeminjamanInvoice($id_pinjam){
+        $q = "SELECT t1.id_pinjam, t2.nama_buku FROM detail_peminjaman t1 
+            JOIN buku t2 ON t1.id_buku = t2.id_buku WHERE t1.id_pinjam = $id_pinjam";
+        $res = $this->db->query($q);
+        return $res->result_array();
+
+    }
+
+
 }

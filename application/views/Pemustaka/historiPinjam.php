@@ -37,7 +37,7 @@
                                         <?php } ?>    
                                     </div>
                                     <div class="auto">
-                                        <a class="btn btn-info" href="<?= base_url().'index.php/PemustakaCtl/invoice';?>">Cetak Invoice</a>
+                                        <a class="btn btn-info" href="<?= base_url().'index.php/PemustakaCtl/invoice/'.$d['id_pinjam'];?>">Cetak Invoice</a>
                                     </div>
                                 </div>
                                 

@@ -130,11 +130,19 @@ class PemustakaCtl extends CI_Controller {
         }
     }
     
-    public function invoice(){
+    public function invoice($id_pinjam){
+        $this->load->model('Buku');
         $session_data = $this->session->userdata('logged_in');
+        $id_user = $session_data['id_user'];
+        $peminjaman = $this->Buku->getPeminjamanInvoice($id_pinjam);
+        $detail =  $this->Buku->getDetailPeminjamanInvoice($id_pinjam);
+        //var_dump($hasil);
+        //die();
         $this->load->view('Pemustaka/header');
         $this->load->view('Pemustaka/invoice', array(
-            "nama" => $session_data['namalengkap']
+            "nama" => $session_data['namalengkap'],
+            "peminjaman" => $peminjaman,
+            "detail" => $detail   
         ));
         $this->load->view('Pemustaka/footer');
     }
