@@ -2,13 +2,17 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PustakawanCtl extends CI_Controller {
+
      public function index(){
+        $this->load->model('Account');
+        $Info = $this->Account->getAllUser();
         $session_data = $this->session->userdata('logged_in');
+        // var_dump($userInfo);
+        // die();
         $this->load->view('Pustakawan/header');
-        $this->load->view('Pustakawan/index',array(
-            "nama" => $session_data['namalengkap'],
-            "photo" => $session_data['photo'])
-        );
+        $this->load->view('Pustakawan/index', array(
+            "user" => $Info
+        ));   
         $this->load->view('Pustakawan/footer');
     }
     

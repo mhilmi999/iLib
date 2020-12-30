@@ -66,6 +66,16 @@
   <!-- <div id="preloader"></div> -->
 
   <!-- JavaScript Libraries -->
+  <script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    }
+  </script>
+
   <script src="<?= base_url(); ?>/asset/NewBiz/lib/jquery/jquery.min.js"></script>
   <script src="<?= base_url(); ?>/asset/NewBiz/lib/jquery/jquery-migrate.min.js"></script>
   <script src="<?= base_url(); ?>/asset/NewBiz/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -85,11 +95,11 @@
   <script src="<?= base_url(); ?>/asset/NewBiz/js/main.js"></script>
 
   <!-- Page level plugins -->
-  <script src="<?= base_url();?>/asset/sidebar/vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="<?= base_url();?>/asset/sidebar/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="<?= base_url(); ?>/asset/sidebar/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url(); ?>/asset/sidebar/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="<?= base_url();?>/asset/sidebar/js/demo/datatables-demo.js"></script>
+  <script src="<?= base_url(); ?>/asset/sidebar/js/demo/datatables-demo.js"></script>
 
   </body>
 

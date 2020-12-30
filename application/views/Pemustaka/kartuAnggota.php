@@ -22,16 +22,24 @@
     <!-- partial:index.partial.html -->
     <div class="kontener">
         <div class="kondom-photo">
+            <br>
             <img src="<?= base_url('./photos/pemustaka/') . $photo; ?>" class="profil">
         </div>
-        <div class="profil-name"><?= $nama;?> </div>
-        <p style="margin-top:5px;" class="tentang">NRP      : <?= $nrp;?></p>
-        <p class="tentang">No. Hp     :<?= $no_hp;?></p>
-        <p class="tentang">Departemen :<?= $departemen;?></p>
-        <p style="text-align:center; margin-left:0px;"  class="tentang">Kartu ini merupakan tanda sah Keanggotaan Perpustakaan iLib </p>
-    <br>
+
+        <div class="profil-name"><?= $nama; ?></div>
+        <br>
+        <br>
+        <br> 
+        <br>
+        <br>
+
+        <p class="tentang">NRP : <?= $nrp; ?></p>
+        <p class="tentang">No. Hp : <?= $no_hp; ?></p>
+        <p class="tentang">Departemen : <?= $departemen; ?></p>
+        <p class="tentang">Kartu ini merupakan tanda sah Keanggotaan Perpustakaan iLib </p>
+
+        <br>
     </div>
-    <!-- partial -->
     <a href="<?= base_url(). 'index.php/PemustakaCtl/cetakKartu';?>" style="display: flex; justify-content: center;" class="kontener pesan-btn" >Cetak Kartu</a>
         
 </body>

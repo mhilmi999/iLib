@@ -31,7 +31,7 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
-                                        <tr>
+                                        <tr style="background-color: #17b7ce; color: white">
                                             <th>Nama Peminjam </th>
                                             <th>Judul Buku</th>
                                             <th>Status</th>

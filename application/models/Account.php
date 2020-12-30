@@ -14,7 +14,6 @@ class Account extends CI_Model
         $email = $this->input->post('email');
         $password = MD5($this->input->post('password'));
 
-
         //membuat record baru di tabel users  
         $thequery = "INSERT INTO member (username, password, nama,
                     nrp, email, no_hp, departemen, alamat, photo) 
@@ -38,7 +37,13 @@ class Account extends CI_Model
             return $users;
         }
         
-        return [];
-        
+        return [];   
+    }
+
+    public function getAllUser(){
+        $q="SELECT * FROM `member` WHERE role = 1";
+        $res = $this->db->query($q);
+        return $res->result_array();
+
     }
 }

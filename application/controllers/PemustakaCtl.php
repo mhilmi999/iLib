@@ -2,15 +2,23 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PemustakaCtl extends CI_Controller {
-
+    
     public function index(){
         $session_data = $this->session->userdata('logged_in');
+        $this->load->helper(array('url', 'security'));
+        $this->load->model('Buku');
+        $this->load->library(array('form_validation'));
+        $data['buku']=$this->Buku->getBuku();
         $this->load->view('Pemustaka/header');
-        $this->load->view('Pemustaka/index', array(
-            "nama" => $session_data['namalengkap'],
-            "photo" => $session_data['photo']
-        ));
+        //var_dump($buku);
+        // $this->load->view('Pemustaka/index', array(
+        //     "nama" => $session_data['namalengkap'],
+        //     "photo" => $session_data['photo']
+        // ));
+        $this->load->view('Pemustaka/katalogBukuIndex', $data);
         $this->load->view('Pemustaka/footer');
+        // $this->load->view('Pemustaka/header');
+        // $this->load->view('Pemustaka/footer');
     }
     
     public function kartuAnggota(){
