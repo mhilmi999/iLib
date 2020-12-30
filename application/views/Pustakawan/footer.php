@@ -11,14 +11,14 @@
             <p>Perpustakaan online yang memudahkan kamu untuk melakukan reservasi buku secara online dan tanpa batas.</p>
           </div>
 
-       
+
 
           <div class="col-lg-3 col-md-6 footer-contact">
             <h4>Hubungi Kami</h4>
             <p>
               Gedung Perpustakaan ITS <br>
               ITS, Surabaya<br>
-    
+
               <strong>Phone:</strong> +1 5589 55488 55<br>
               <strong>Email:</strong> ilib.perpus@gmail.com<br>
             </p>
@@ -37,7 +37,7 @@
             <h4>Beri Masukan</h4>
             <p>Jika memiliki Kendala, Silahkan kirim kritik dan saran pada email kami. </p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit"  value="Kirim">
+              <input type="email" name="email"><input type="submit" value="Kirim">
             </form>
           </div>
 
@@ -66,23 +66,31 @@
   <!-- <div id="preloader"></div> -->
 
   <!-- JavaScript Libraries -->
-  <script src="<?= base_url();?>/asset/NewBiz/lib/jquery/jquery.min.js"></script>
-  <script src="<?= base_url();?>/asset/NewBiz/lib/jquery/jquery-migrate.min.js"></script>
-  <script src="<?= base_url();?>/asset/NewBiz/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<?= base_url();?>/asset/NewBiz/lib/easing/easing.min.js"></script>
-  <script src="<?= base_url();?>/asset/NewBiz/lib/mobile-nav/mobile-nav.js"></script>
-  <script src="<?= base_url();?>/asset/NewBiz/lib/wow/wow.min.js"></script>
-  <script src="<?= base_url();?>/asset/NewBiz/lib/waypoints/waypoints.min.js"></script>
-  <script src="<?= base_url();?>/asset/NewBiz/lib/counterup/counterup.min.js"></script>
-  <script src="<?= base_url();?>/asset/NewBiz/lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="<?= base_url();?>/asset/NewBiz/lib/isotope/isotope.pkgd.min.js"></script>
-  <script src="<?= base_url();?>/asset/NewBiz/lib/lightbox/js/lightbox.min.js"></script>
-  <script src="<?= base_url();?>/asset/NewBiz/aos/aos.js"></script>
+  <script src="<?= base_url(); ?>/asset/NewBiz/lib/jquery/jquery.min.js"></script>
+  <script src="<?= base_url(); ?>/asset/NewBiz/lib/jquery/jquery-migrate.min.js"></script>
+  <script src="<?= base_url(); ?>/asset/NewBiz/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?= base_url(); ?>/asset/NewBiz/lib/easing/easing.min.js"></script>
+  <script src="<?= base_url(); ?>/asset/NewBiz/lib/mobile-nav/mobile-nav.js"></script>
+  <script src="<?= base_url(); ?>/asset/NewBiz/lib/wow/wow.min.js"></script>
+  <script src="<?= base_url(); ?>/asset/NewBiz/lib/waypoints/waypoints.min.js"></script>
+  <script src="<?= base_url(); ?>/asset/NewBiz/lib/counterup/counterup.min.js"></script>
+  <script src="<?= base_url(); ?>/asset/NewBiz/lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="<?= base_url(); ?>/asset/NewBiz/lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="<?= base_url(); ?>/asset/NewBiz/lib/lightbox/js/lightbox.min.js"></script>
+  <script src="<?= base_url(); ?>/asset/NewBiz/aos/aos.js"></script>
   <!-- Contact Form JavaScript File -->
-  <script src="<?= base_url();?>/asset/NewBiz/contactform/contactform.js"></script>
+  <script src="<?= base_url(); ?>/asset/NewBiz/contactform/contactform.js"></script>
 
   <!-- Template Main Javascript File -->
-  <script src="<?= base_url();?>/asset/NewBiz/js/main.js"></script>
+  <script src="<?= base_url(); ?>/asset/NewBiz/js/main.js"></script>
 
-</body>
-</html>
+  <!-- Page level plugins -->
+  <script src="<?= base_url();?>/asset/sidebar/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url();?>/asset/sidebar/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="<?= base_url();?>/asset/sidebar/js/demo/datatables-demo.js"></script>
+
+  </body>
+
+  </html>
