@@ -75,13 +75,8 @@ class PustakawanCtl extends CI_Controller {
 		if ($this->upload->do_upload('photo')) {   //berhasil upload
 			$data = array('upload_data' => $this->upload->data($new_name));
 			$this->Buku->tambahBuku($config['file_name']);	
-			$session_data = $this->session->userdata('logged_in');
-            $this->load->view('Pustakawan/header');
-            $this->load->view('Pustakawan/index',array(
-                "nama" => $session_data['namalengkap'],
-                "photo" => $session_data['photo'])
-            );
-            $this->load->view('Pustakawan/footer');
+            $session_data = $this->session->userdata('logged_in');
+            $this->katalogBuku();
 		    }else{ // gagal uploads
 			echo $this->upload->display_errors();
             }

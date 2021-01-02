@@ -27,11 +27,7 @@
         </div>
 
         <div class="profil-name"><?= $nama; ?></div>
-        <br>
-        <br>
-        <br> 
-        <br>
-        <br>
+        <br><br><br><br><br><br>
 
         <p class="tentang">NRP : <?= $nrp; ?></p>
         <p class="tentang">No. Hp : <?= $no_hp; ?></p>
